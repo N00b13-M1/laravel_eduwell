@@ -13,7 +13,7 @@
                     <div class="item">
                         <div class="service-item">
                             <div class="icon">
-                                <img src="{{ asset('assets/images/{{ $service->logo }}') }}" alt="">
+                                <img src="{{ asset('assets/images/' . $service->logo)}}" alt="">
                             </div>
                             <h4>{{ $service->title }}</h4>
                             <p>{{ $service->description }}
