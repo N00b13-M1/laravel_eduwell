@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Service;
 use App\Models\Testimonial;
 use App\Models\Title;
+use App\Models\User;
+
 
 Route::get('/', function () {
     $services = Service::all();
@@ -21,7 +23,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/back', function(){
-        return 'Bonjour Admin';
+        $users = User::all();
+        return view('back.pages.back', compact('users'));
     });
 });
 

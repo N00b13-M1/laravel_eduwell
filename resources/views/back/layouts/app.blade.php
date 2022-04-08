@@ -42,7 +42,7 @@
     </style> --}}
     </head>
     <body class="antialiased">
-        @@yield('content')
+        @yield('content')
         <!-- Scripts -->
         <!-- Bootstrap core JavaScript -->
         <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
