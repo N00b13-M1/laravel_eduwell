@@ -5,23 +5,15 @@ use App\Models\Service;
 use App\Models\Testimonial;
 use App\Models\Title;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     $services = Service::all();
     $titles = Title::all();
     $testimonials = Testimonial::all();
     return view('welcome', compact('services', 'titles', 'testimonials'));
 });
+
+Route::get('/foo', '\App\http\Controllers\RoleController@foo',);
+Route::get('/bar', '\App\http\Controllers\RoleController@bar',);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
