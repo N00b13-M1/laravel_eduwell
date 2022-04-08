@@ -83,13 +83,18 @@ class RoleController extends Controller
     }
 
 
-    public function foo(){
-        return view('test.foo');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except(['bar', 'test']); //except est une exception pour les fonctions, il permet de donné l'accès à certaine fonction
+    // }
 
-    public function bar(){
-        return view('test.bar');
-    }
+    // public function foo(){
+    //     return view('test.foo');
+    // }
+
+    // public function bar(){
+    //     return view('test.bar');
+    // }
 
 
 }
