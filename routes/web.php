@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Service;
 use App\Models\Testimonial;
@@ -14,6 +15,8 @@ Route::get('/', function () {
     $testimonials = Testimonial::all();
     return view('welcome', compact('services', 'titles', 'testimonials'));
 });
+
+Route::resource("back/pages/testimonials", TestimonialController::class);
 
 // Route::get('/foo', '\App\http\Controllers\RoleController@foo',);
 // Route::get('/bar', '\App\http\Controllers\RoleController@bar',);

@@ -1,4 +1,4 @@
-@extends('back/layouts/app')
+@extends('back.layouts.app')
 @section('content')
     @include('back/partials/banner')
     <div class="w-100 h-100 d-flex align-items-center">

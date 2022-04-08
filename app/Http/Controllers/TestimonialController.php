@@ -14,7 +14,8 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        //
+        $testimonial = Testimonial::all();
+        return view('back.pages.testimonials.all', compact("testimonial"));
     }
 
     /**
@@ -24,7 +25,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view("back.pages.testimonials.create");
     }
 
     /**
@@ -35,8 +36,16 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $testimonial = new Testimonial();
+        $testimonial->testimonial = $request->testimonial;
+        $testimonial->name = $request ->name;
+        $testimonial->position = $request->position;
+        $testimonial->updated_at = now();
+
+        $testimonial->save();
+        return redirect()->route("testimonials.index");
     }
+    
 
     /**
      * Display the specified resource.
@@ -44,10 +53,10 @@ class TestimonialController extends Controller
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function show(Testimonial $testimonial)
-    {
-        //
-    }
+    // public function show(Testimonial $testimonial)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -55,9 +64,10 @@ class TestimonialController extends Controller
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function edit(Testimonial $testimonial)
+    public function edit($id)
     {
-        //
+        $testimonial = Testimonial::find($id);
+        return view('back.pages.testimonials.edit', compact("testimonial"));
     }
 
     /**
@@ -67,9 +77,17 @@ class TestimonialController extends Controller
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(Request $request, $id)
     {
-        //
+        $testimonial = Testimonial::find($id);
+        $testimonial->testimonial = $request->testimonial;
+        $testimonial->name = $request ->name;
+        $testimonial->position = $request->position;
+
+        $testimonial->updated_at = now();
+
+        $testimonial->save();
+        return redirect()->route("testimonials.index");
     }
 
     /**
@@ -78,8 +96,16 @@ class TestimonialController extends Controller
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimonial $testimonial)
+    public function destroy($id)
     {
-        //
+        $longueurtestimonial = Testimonial::all()->count();
+        $testimonial = Testimonial::find($id);
+
+        if($longueurtestimonial > 1){
+            $testimonial->delete();
+            return redirect()->back()->with("success", "Suppression effectué avec succès");
+        } else {
+            return redirect()->back()->with("erreur", "vous ne pouves pas supprimer tout les testimonials");
+        }
     }
 }
