@@ -3,10 +3,9 @@
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
-                    <h6>OUR COURSES</h6>
-                    <h4>What You Can <em>Learn</em></h4>
-                    <p>You just think about TemplateMo whenever you need free CSS templates for your business
-                        website</p>
+                    <h6>{{ $titles[2]->smallTitle }}</h6>
+                    <h4>{{ $titles[2]->bigTitle }}</h4>
+                    <p>{{ $titles[2]->description }}</p>
                 </div>
             </div>
             <div class="col-lg-12">

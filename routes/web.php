@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Service;
+use App\Models\Testimonial;
+use App\Models\Title;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,9 @@ use App\Models\Service;
 
 Route::get('/', function () {
     $services = Service::all();
-    return view('welcome', compact('services'));
+    $titles = Title::all();
+    $testimonials = Testimonial::all();
+    return view('welcome', compact('services', 'titles', 'testimonials'));
 });
 
 Route::get('/dashboard', function () {
