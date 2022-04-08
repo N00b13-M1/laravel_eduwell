@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Service;
 use App\Models\Testimonial;
@@ -12,6 +13,8 @@ Route::get('/', function () {
     return view('welcome', compact('services', 'titles', 'testimonials'));
 });
 
+Route::resource("back/pages/testimonials", TestimonialController::class);
+
 // Route::get('/foo', '\App\http\Controllers\RoleController@foo',);
 // Route::get('/bar', '\App\http\Controllers\RoleController@bar',);
 
@@ -20,8 +23,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
-    Route::get('/back', function(){
-        return 'Bonjour Admin';
+    Route::get('/back/*', function(){
+        return view('back/partials/banner');
     });
 });
 
