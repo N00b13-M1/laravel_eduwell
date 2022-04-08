@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Service;
 use App\Models\Testimonial;
@@ -20,6 +21,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/back/services', [ServiceController::class, 'services.index'])->name('services.index');
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/back', function(){
