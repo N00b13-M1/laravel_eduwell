@@ -25,14 +25,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
-<<<<<<< HEAD
-    Route::get('/back/*', function(){
-        return view('back/partials/banner');
-=======
     Route::get('/back', function(){
         $users = User::all();
         return view('back.pages.back', compact('users'));
->>>>>>> a4627aab91bf3ed9f8d6f6a778b5bca041a014f2
     });
 });
 
