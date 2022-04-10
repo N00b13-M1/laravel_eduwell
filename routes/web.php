@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome', compact('services', 'titles', 'testimonials'));
 })->name('welcome.index');
 
-Route::resource("back/pages/testimonials", TestimonialController::class);
+Route::resource("back/testimonials", TestimonialController::class);
 
 // Route::get('/foo', '\App\http\Controllers\RoleController@foo',);
 // Route::get('/bar', '\App\http\Controllers\RoleController@bar',);
@@ -28,7 +28,7 @@ Route::get('/dashboard', function () {
 // Route::get('/back/services', [ServiceController::class, 'index'])->name('services.index');
 // Route::get('/back/services/{id}/edit',[ServiceController::class, 'edit'])->name('services.edit');
 
-Route::resource('services', ServiceController::class);
+Route::resource('back/services', ServiceController::class);
 
 
 
