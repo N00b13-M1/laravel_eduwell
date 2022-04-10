@@ -1,7 +1,7 @@
 @extends('back.layouts.app')
 @section('content')
     @include('back.partials.banner')
-    {{-- @if (session()->has('success'))
+    @if (session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}
     </div>
@@ -12,9 +12,8 @@
             {{ session()->get('erreur') }}
         </div>
     @endif
-
-    <h1 class="text-center py-4">Services</h1>
     <div class="container">
+        <h1 class="text-center services fs-1">Services</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -25,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                <a href="{{ route("services.create") }}">Create</a>
+                {{-- <a href="{{ route("services.create") }}">Create</a> --}}
                 @foreach ($services as $service)
                     <tr>
                         <th scope="row">{{ $service->id }}</th>
@@ -33,7 +32,7 @@
                         <td>{{ $service->title }}</td>
                         <td>{{ $service->description }}</td>
                         {{-- <td>
-                            <a href="{{ route('joueurs.edit', $joueur) }}"><button class="btn btn-warning">Edit</button></a>
+                            <a href="{{ route('services.edit', $joueur) }}"><button class="btn btn-warning">Edit</button></a>
                         </td>
                         <td><form action="{{ route("joueurs.destroy", $joueur) }}" method="post">
                             @csrf
@@ -45,6 +44,5 @@
                 @endforeach
             </tbody>
         </table>
-    </div> --}}
-    test
+    </div>
 @endsection

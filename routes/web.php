@@ -14,7 +14,7 @@ Route::get('/', function () {
     $titles = Title::all();
     $testimonials = Testimonial::all();
     return view('welcome', compact('services', 'titles', 'testimonials'));
-});
+})->name('welcome.index');
 
 Route::resource("back/pages/testimonials", TestimonialController::class);
 
@@ -25,7 +25,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/back/services', [ServiceController::class, 'services.index'])->name('services.index');
+// Route::get('/back/services', [ServiceController::class, 'index'])->name('services.index');
+// Route::get('/back/services/{id}/edit',[ServiceController::class, 'edit'])->name('services.edit');
+
+Route::resource('services', ServiceController::class);
+
+
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/back', function(){
