@@ -25,7 +25,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('back.pages.services.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = new Service();
+        $service->logo = $request->logo;
+        $service->title = $request->title;
+        $service->description = $request->description;
+        $service->updated_at = now();
+        $service->save();
+
+        return redirect()->route('services.index');
     }
 
     /**
@@ -47,7 +54,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view('back.pages.services.show', compact('service'));
     }
 
     /**
@@ -58,7 +65,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('back.pages.services.edit', compact("service"));
     }
 
     /**
@@ -70,7 +77,15 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->logo = $request->logo;
+        $service->title = $request->title;
+        $service->description = $request->description;
+        $service->updated_at = now();
+        
+        $service->save();
+        return redirect()->route('services.index');
+
+
     }
 
     /**
@@ -81,6 +96,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        return redirect()->back();
     }
 }
