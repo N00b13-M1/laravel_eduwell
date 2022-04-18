@@ -21,12 +21,10 @@ Route::get('/', function () {
 Route::resource("back/testimonials", TestimonialController::class);
 Route::resource('back/services', ServiceController::class);
 
-Route::get('/test' , [TitleController::class, 'index']);
-
-
-
+// Route::get('/test' , [TitleController::class, 'index']);
 // Route::get('/foo', '\App\http\Controllers\RoleController@foo',);
 // Route::get('/bar', '\App\http\Controllers\RoleController@bar',);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -43,9 +41,4 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     });
 });
 
-
-
 require __DIR__.'/auth.php';
-
-
-

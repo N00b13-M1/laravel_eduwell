@@ -1,18 +1,18 @@
 @extends('back.layouts.app')
 @section('content')
     @include('back.partials.banner')
-    @if (session()->has('success'))
-    <div class="alert alert-success">
-        {{ session()->get('success') }}
-    </div>
-    @endif
-    @if (session()->has('erreur'))
-        <div class="alert alert-danger">
-            {{ session()->get('erreur') }}
-        </div>
-    @endif
     <div class="container">
         <h1 class="text-center services fs-1">Services</h1>
+        @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+        @endif
+        @if (session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+        @endif
         <table class="table">
             <thead>
                 <tr>
@@ -34,15 +34,7 @@
                         <td>
                             <a href="{{ route("services.show", $service) }}"><button class="btn btn-primary">Show</button>
                             </a>
-                        </td> 
-                        <td>
-                            <a href="{{ route('services.edit', $service) }}">Edit</a>
                         </td>
-                        <td><form action="{{ route("services.destroy", $service) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Deleted</button>
-                        </form></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -50,3 +42,14 @@
     </div>
 @endsection
 
+{{-- //Operating VOltage: 5V
+//Input voltage (recommended): 7-12V
+//Input Voltage (limits): 6-20V
+//Digital I/O Pins: 14 (of which 6 provide PWM output)
+//Analog input pins: 6
+//DC current per I/O pin: 40 mA (can't run motors)
+//DC current for 3.3V Pin: 50 mA 
+//Flash mem: 32 kb (5kb bootloader, suffices for 10000lines of code)
+//SRAM: 2 KB 
+//EEPROM: 1KB
+//Clock speed: 16 MHz, 16mil cycles/sec --}}

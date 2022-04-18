@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Laravel\Ui\Presets\Vue;
+use Whoops\Run;
+
+use function Ramsey\Uuid\v2;
 
 class ServiceController extends Controller
 {
@@ -96,7 +100,12 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        $service->delete();
-        return redirect()->back();
+        $services = Service::all()->count();
+        if ($services > 1) {
+            $service->delete();
+            return redirect()->route('services.index')->with("success", "Successfully deleted");
+        } else {
+            return redirect()->route('services.index')->with("error", "You cannot delete all services");
+        }
     }
 }
