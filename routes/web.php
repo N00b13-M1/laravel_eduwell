@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::resource("back/testimonials", TestimonialController::class);
 Route::resource('back/services', ServiceController::class);
+Route::resource('back/titles', TitleController::class);
 
 // Route::get('/test' , [TitleController::class, 'index']);
 // Route::get('/foo', '\App\http\Controllers\RoleController@foo',);

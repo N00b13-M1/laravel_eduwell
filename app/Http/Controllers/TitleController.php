@@ -14,7 +14,8 @@ class TitleController extends Controller
      */
     public function index()
     {
-        //
+        $titles = Title::all();
+        return view ('back.pages.titles.all', compact('titles'));
     }
 
     /**
@@ -46,7 +47,7 @@ class TitleController extends Controller
      */
     public function show(Title $title)
     {
-        //
+        return view('back.pages.titles.show', compact('title'));
     }
 
     /**
@@ -57,7 +58,7 @@ class TitleController extends Controller
      */
     public function edit(Title $title)
     {
-        //
+        return view('back.pages.titles.edit', compact('title'));
     }
 
     /**
@@ -69,7 +70,15 @@ class TitleController extends Controller
      */
     public function update(Request $request, Title $title)
     {
-        //
+        $title->smallTitle = $request->smallTitle;
+        $title->bigTitle = $request->bigTitle;
+        $title->description = $request->description;
+        $title->buttontext = $request->buttontext;
+        $title->img = $request->img;
+        $title->updated_at = now();
+        
+        $title->save();
+        return redirect()->route('titles.index');
     }
 
     /**
