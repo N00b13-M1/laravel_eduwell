@@ -11,11 +11,11 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li class=""><a href="{{ route('back.index') }}" class="active">Home</a></li>
+                        {{-- <li class=""><a href="{{ route('back.index') }}" class="active">Home</a></li> --}}
                         <li class=""><a href="{{ route('services.index') }}">Services</a></li>
                         <li class=""><a href="{{ route('titles.index') }}">Titles</a></li>
                         <li class=""><a href="{{ route('testimonials.index') }}">Testimonials</a></li>
-                        <li class=""><a href="#contact-section">Contact Us</a></li>
+                        <li class=""><a href="{{ route('contact.index') }}">Contact Us</a></li>
                         <li>
                             @if (Route::has('login'))
                                 <div class="hidden fixed sm:block d-flex bg-light rounded-pill px-2">

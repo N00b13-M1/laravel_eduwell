@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             TitleSeeder::class,
             TestimonialSeeder::class,
+            ContactSeeder::class,
+            TitleSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
     }

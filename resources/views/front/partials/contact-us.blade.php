@@ -6,7 +6,11 @@
 
                     <!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
                     <iframe
+<<<<<<< HEAD
                         src="{{ url('https://maps.google.com/maps?q=10%20Place%20Luxembourg,%20Bruxelles&t=&z=18&ie=UTF8&iwloc=&output=embed') }}"
+=======
+                        src="{{ url("https://maps.google.com/maps?q=".$contact[0]->adresse."&t=&z=13&ie=UTF8&iwloc=&output=embed") }}"
+>>>>>>> 3f1eeae678875a1098179fe845ce3f3c94dc7f79
                         width="100%" height="420px" frameborder="0"
                         style="border:0; border-radius: 15px; position: relative; z-index: 2;"
                         allowfullscreen=""></iframe>
@@ -17,7 +21,7 @@
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <h4>Phone</h4>
-                                <span>010-020-0340</span>
+                                <span>{{ $contact[0]->phone }}</span>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -26,7 +30,7 @@
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <h4>Mobile</h4>
-                                <span>090-080-0760</span>
+                                <span>{{ $contact[0]->phone }}</span>
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,10 @@
         </div>
     @endif
 
+<<<<<<< HEAD
+    <h1 class="text-center py-4">Services</h1>
+=======
+>>>>>>> da86e31bd529cb3ed20dfd183bfd99ec128c97f7
     <div class="container">
         <h1 class="text-center services fs-1">Services</h1>
 
@@ -43,6 +47,11 @@
             </tbody>
         </table>
     </div>
+<<<<<<< HEAD
+    test
+@endsection
+=======
 @endsection
 
 
+>>>>>>> da86e31bd529cb3ed20dfd183bfd99ec128c97f7
