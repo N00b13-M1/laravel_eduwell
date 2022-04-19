@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Service;
@@ -15,7 +16,9 @@ Route::get('/', function () {
     return view('welcome', compact('services', 'titles', 'testimonials'));
 });
 
-Route::resource("back/pages/testimonials", TestimonialController::class);
+Route::resource("back/testimonials", TestimonialController::class);
+
+Route::resource('/back/services', ServiceController::class);
 
 // Route::get('/foo', '\App\http\Controllers\RoleController@foo',);
 // Route::get('/bar', '\App\http\Controllers\RoleController@bar',);
@@ -23,6 +26,8 @@ Route::resource("back/pages/testimonials", TestimonialController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/back', function(){
