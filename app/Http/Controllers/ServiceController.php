@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Laravel\Ui\Presets\Vue;
+use Whoops\Run;
+
+use function Ramsey\Uuid\v2;
 
 class ServiceController extends Controller
 {
@@ -25,9 +29,10 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('back.pages.services.create');
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -36,7 +41,14 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = new Service();
+        $service->logo = $request->logo;
+        $service->title = $request->title;
+        $service->description = $request->description;
+        $service->updated_at = now();
+        $service->save();
+
+        return redirect()->route('services.index');
     }
 
     /**
@@ -47,7 +59,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view('back.pages.services.show', compact('service'));
     }
 
     /**
@@ -58,7 +70,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('back.pages.services.edit', compact("service"));
     }
 
     /**
@@ -70,7 +82,15 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->logo = $request->logo;
+        $service->title = $request->title;
+        $service->description = $request->description;
+        $service->updated_at = now();
+        
+        $service->save();
+        return redirect()->route('services.index');
+
+
     }
 
     /**
@@ -81,6 +101,12 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $services = Service::all()->count();
+        if ($services > 1) {
+            $service->delete();
+            return redirect()->route('services.index')->with("success", "Successfully deleted");
+        } else {
+            return redirect()->route('services.index')->with("error", "You cannot delete all services");
+        }
     }
 }

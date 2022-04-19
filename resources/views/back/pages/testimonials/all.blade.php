@@ -1,28 +1,26 @@
 @extends('back.layouts.app')
-
 @section('content')
-
-@if (session()->has('question'))
-    <div class="alert alert-warning">
-        {{ session()->get('question') }}
-        <button>Oui</button>
-        <button>Non</button>
-    </div>
-@endif
-
-@if (session()->has('success'))
-    <div class="alert alert-success">
-        {{ session()->get('success') }}
-    </div>
-@endif
-@if (session()->has('erreur'))
-    <div class="alert alert-danger">
-        {{ session()->get('erreur') }}
-    </div>
-@endif
-
-    <h1 class="text-center py-4">Testimonial</h1>
+    @include('back.partials.banner')
     <div class="container">
+        <h1 class="text-center services fs-1">Testimonials</h1>
+        @if (session()->has('question'))
+            <div class="alert alert-warning">
+                {{ session()->get('question') }}
+                <button>Oui</button>
+                <button>Non</button>
+            </div>
+        @endif
+
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @endif
+        @if (session()->has('erreur'))
+            <div class="alert alert-danger">
+                {{ session()->get('erreur') }}
+            </div>
+        @endif
         <table class="table">
             <thead>
                 <tr>

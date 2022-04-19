@@ -1,5 +1,4 @@
 @extends('back.layouts.app')
-
 @section('content')
     <h1 class="text-center py-4">Créer testimonial</h1>
     <div class="container">
