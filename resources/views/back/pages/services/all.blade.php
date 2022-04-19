@@ -1,7 +1,6 @@
 @extends('back.layouts.app')
 @section('content')
     @include('back.partials.banner')
-<<<<<<< HEAD
     @if (session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}
@@ -15,8 +14,6 @@
     @endif
 
     <h1 class="text-center py-4">Services</h1>
-=======
->>>>>>> a5b4ade84b8063b8cf1ac93246689f42fe307c08
     <div class="container">
         <h1 class="text-center services fs-1">Services</h1>
         @if (session()->has('success'))
@@ -56,10 +53,5 @@
             </tbody>
         </table>
     </div>
-<<<<<<< HEAD
     test
 @endsection
-=======
-@endsection
-
->>>>>>> a5b4ade84b8063b8cf1ac93246689f42fe307c08
