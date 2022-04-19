@@ -1,6 +1,6 @@
 @extends('back.layouts.app')
 @section('content')
-    <h1 class="text-center py-4">Create Service</h1>
+    <h1 class="text-center py-4">Edit Service</h1>
     <div class="container">
         <form action="{{ route("services.update", $service) }}" method="POST">
             @csrf
@@ -17,7 +17,7 @@
                 <label for="description" class="form-label">Description</label>
                 <input type="text" class="form-control" id="description" name="description" value="{{ $service->description }}">
             </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 @endsection

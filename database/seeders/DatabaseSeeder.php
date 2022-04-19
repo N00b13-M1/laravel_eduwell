@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             TitleSeeder::class,
             TestimonialSeeder::class,
             ContactSeeder::class,
+            TitleSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
     }

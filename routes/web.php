@@ -31,7 +31,9 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::resource("back/testimonials", TestimonialController::class);
     Route::resource('back/services', ServiceController::class);
     Route::resource('back/contact', ContactController::class);
+    Route::resource('back/titles', TitleController::class);
 });
+
 
 
 

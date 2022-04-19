@@ -1,26 +1,19 @@
 @extends('back.layouts.app')
 @section('content')
     @include('back.partials.banner')
-    <div class="container">
-        <h1 class="text-center services fs-1">Testimonials</h1>
-        @if (session()->has('question'))
-            <div class="alert alert-warning">
-                {{ session()->get('question') }}
-                <button>Oui</button>
-                <button>Non</button>
-            </div>
-        @endif
-
         @if (session()->has('success'))
-            <div class="alert alert-success">
-                {{ session()->get('success') }}
-            </div>
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
         @endif
+    
         @if (session()->has('erreur'))
             <div class="alert alert-danger">
                 {{ session()->get('erreur') }}
             </div>
         @endif
+        <div class="container">
+            <h1 class="text-center services fs-1">Testimonials</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -52,3 +45,4 @@
         </table>
     </div>
 @endsection
+

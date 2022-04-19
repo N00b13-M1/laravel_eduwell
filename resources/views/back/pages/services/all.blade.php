@@ -13,19 +13,13 @@
         </div>
     @endif
 
+<<<<<<< HEAD
     <h1 class="text-center py-4">Services</h1>
+=======
+>>>>>>> da86e31bd529cb3ed20dfd183bfd99ec128c97f7
     <div class="container">
         <h1 class="text-center services fs-1">Services</h1>
-        @if (session()->has('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div>
-        @endif
-        @if (session()->has('error'))
-            <div class="alert alert-danger">
-                {{ session()->get('error') }}
-            </div>
-        @endif
+
         <table class="table">
             <thead>
                 <tr>
@@ -53,5 +47,11 @@
             </tbody>
         </table>
     </div>
+<<<<<<< HEAD
     test
 @endsection
+=======
+@endsection
+
+
+>>>>>>> da86e31bd529cb3ed20dfd183bfd99ec128c97f7

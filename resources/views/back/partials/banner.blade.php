@@ -13,7 +13,7 @@
                     <ul class="nav">
                         {{-- <li class=""><a href="{{ route('back.index') }}" class="active">Home</a></li> --}}
                         <li class=""><a href="{{ route('services.index') }}">Services</a></li>
-                        <li class=""><a href="#courses">Courses</a></li>
+                        <li class=""><a href="{{ route('titles.index') }}">Titles</a></li>
                         <li class=""><a href="{{ route('testimonials.index') }}">Testimonials</a></li>
                         <li class=""><a href="{{ route('contact.index') }}">Contact Us</a></li>
                         <li>
