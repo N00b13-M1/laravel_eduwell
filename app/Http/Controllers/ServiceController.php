@@ -32,6 +32,7 @@ class ServiceController extends Controller
         return view('back.pages.services.create');
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *

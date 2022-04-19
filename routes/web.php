@@ -38,7 +38,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/back', function(){
         $users = User::all();
         return view('back.pages.back', compact('users'));
-    });
+    })->name('back.index');
 });
 
 require __DIR__.'/auth.php';

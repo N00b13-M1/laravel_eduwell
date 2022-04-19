@@ -5,17 +5,17 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
+                    <a href="{{ route('welcome.index') }}" class="logo">
                         <img src="{{ asset('assets/images/templatemo-eduwell.png') }}" alt="EduWell Template">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                        <li class=""><a href="{{ route('back.index') }}" class="active">Home</a></li>
                         <li class=""><a href="{{ route('services.index') }}">Services</a></li>
                         <li class=""><a href="#courses">Courses</a></li>
-                        <li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
-                        <li class="scroll-to-section"><a href="#contact-section">Contact Us</a></li>
+                        <li class=""><a href="{{ route('testimonials.index') }}">Testimonials</a></li>
+                        <li class=""><a href="#contact-section">Contact Us</a></li>
                         <li>
                             @if (Route::has('login'))
                                 <div class="hidden fixed sm:block d-flex bg-light rounded-pill px-2">
@@ -45,3 +45,4 @@
     </div>
 </header>
 <!-- ***** Header Area End ***** -->
+

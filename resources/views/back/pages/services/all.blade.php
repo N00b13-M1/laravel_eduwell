@@ -42,14 +42,3 @@
     </div>
 @endsection
 
-{{-- //Operating VOltage: 5V
-//Input voltage (recommended): 7-12V
-//Input Voltage (limits): 6-20V
-//Digital I/O Pins: 14 (of which 6 provide PWM output)
-//Analog input pins: 6
-//DC current per I/O pin: 40 mA (can't run motors)
-//DC current for 3.3V Pin: 50 mA 
-//Flash mem: 32 kb (5kb bootloader, suffices for 10000lines of code)
-//SRAM: 2 KB 
-//EEPROM: 1KB
-//Clock speed: 16 MHz, 16mil cycles/sec --}}
