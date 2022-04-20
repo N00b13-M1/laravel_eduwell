@@ -1,21 +1,20 @@
 @extends('back.layouts.app')
 @section('content')
     @include('back.partials.banner')
-    @if (session()->has('success'))
-    <div class="alert alert-success">
-        {{ session()->get('success') }}
-    </div>
-    @endif
-
-    @if (session()->has('erreur'))
-        <div class="alert alert-danger">
-            {{ session()->get('erreur') }}
-        </div>
-    @endif
-
+    
     <div class="container">
         <h1 class="text-center services fs-1">Services</h1>
-
+        @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+        @endif
+    
+        @if (session()->has('erreur'))
+            <div class="alert alert-danger">
+                {{ session()->get('erreur') }}
+            </div>
+        @endif
         <table class="table">
             <thead>
                 <tr>

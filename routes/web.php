@@ -5,6 +5,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
 use App\Models\Contact;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Models\Service;
 use App\Models\Testimonial;
