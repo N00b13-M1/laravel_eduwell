@@ -3,7 +3,6 @@
     @include('back.partials.banner')
     <div class="container">
         <h1 class="text-center services fs-1">Contact</h1>
-
         <table class="table">
             <thead>
                 <tr>
@@ -21,18 +20,13 @@
                             <a href="{{ route('contact.edit', $contact[0]) }}">Edit</a>
                         </td>
                     </tr>
-
             </tbody>
-
             <iframe
-                        src="{{ url("https://maps.google.com/maps?q=".$contact[0]->adresse."&t=&z=13&ie=UTF8&iwloc=&output=embed") }}"
-                        width="100%" height="420px" frameborder="0"
-                        style="border:0; border-radius: 15px; position: relative; z-index: 2;"
-                        allowfullscreen=""></iframe>
+                    src="{{ url("https://maps.google.com/maps?q=".$contact[0]->adresse."&t=&z=17&ie=UTF8&iwloc=&output=embed") }}"
+                    width="100%" height="420px" frameborder="0"
+                    style="border:0; border-radius: 15px; position: relative; z-index: 2;"
+                    allowfullscreen="">
+            </iframe>
         </table>
     </div>
 @endsection
-
-    {{-- <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=molengeek&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123movies</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">integrate google maps into website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div> --}}
-
-    

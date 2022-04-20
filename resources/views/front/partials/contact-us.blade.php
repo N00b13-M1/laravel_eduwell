@@ -6,7 +6,7 @@
 
                     <!-- You just need to go to Google Maps for your own map point, and copy the embed code from Share -> Embed a map section -->
                     <iframe
-                        src="{{ url("https://maps.google.com/maps?q=".$contact[0]->adresse."&t=&z=13&ie=UTF8&iwloc=&output=embed") }}"
+                        src="{{ url("https://maps.google.com/maps?q=".$contact[0]->adresse."&t=&z=18&ie=UTF8&iwloc=&output=embed") }}"
                         width="100%" height="420px" frameborder="0"
                         style="border:0; border-radius: 15px; position: relative; z-index: 2;"
                         allowfullscreen=""></iframe>
@@ -87,3 +87,5 @@
         </div>
     </div>
 </section>
+
+
