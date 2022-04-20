@@ -20,8 +20,29 @@
                             @if (Route::has('login'))
                                 <div class="hidden fixed sm:block d-flex bg-light rounded-pill px-2">
                                     @auth
-                                        <a href="{{ url('/dashboard') }}"
-                                            class="text-sm text-gray-700 dark:text-gray-500 underline  text-info">Dashboard</a>
+                                        {{-- <a href="{{ url('/dashboard') }}"
+                                            class="text-sm text-gray-700 dark:text-gray-500 underline  text-info">Dashboard</a> --}}
+
+
+                                        {{-- test logout --}}
+
+                                                        <!-- Authentication -->
+                                                        <form method="POST" action="{{ route('logout') }}">
+                                                            @csrf
+                                        
+                                                            <x-responsive-nav-link :href="route('logout')"
+                                                                    onclick="event.preventDefault();
+                                                                                this.closest('form').submit();" class="text-primary">
+                                                                {{ __('Log Out') }}
+                                                            </x-responsive-nav-link>
+                                                        </form>
+
+
+
+                                        {{-- test logout --}}
+
+
+
                                     @else
                                         <a href="{{ route('login') }}"
                                             class="text-sm text-gray-700 dark:text-gray-500 underline text-info">Log in</a>
