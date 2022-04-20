@@ -11,11 +11,11 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="#services">Services</a></li>
-                        <li class="scroll-to-section"><a href="#courses">Courses</a></li>
-                        <li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
-                        <li class="scroll-to-section"><a href="#contact-section">Contact Us</a></li>
+                        <li class="scroll-to-section"><a href="/#top" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="/#services">Services</a></li>
+                        <li class="scroll-to-section"><a href="/#courses">Courses</a></li>
+                        <li class="scroll-to-section"><a href="/#testimonials">Testimonials</a></li>
+                        <li class="scroll-to-section"><a href="/#contact-section">Contact Us</a></li>
                         <li>
                             @if (Route::has('login'))
                                 <div class="hidden fixed sm:block d-flex bg-light rounded-pill px-2">
