@@ -3,7 +3,6 @@
     @include('back.partials.banner')
     <div class="container">
         <h1 class="text-center services fs-1">Contact</h1>
-
         <table class="table">
             <thead>
                 <tr>
@@ -21,14 +20,13 @@
                             <a href="{{ route('contact.edit', $contact[0]) }}">Edit</a>
                         </td>
                     </tr>
-
             </tbody>
-
             <iframe
-                        src="{{ url("https://maps.google.com/maps?q=".$contact[0]->adresse."&t=&z=13&ie=UTF8&iwloc=&output=embed") }}"
-                        width="100%" height="420px" frameborder="0"
-                        style="border:0; border-radius: 15px; position: relative; z-index: 2;"
-                        allowfullscreen=""></iframe>
+                    src="{{ url("https://maps.google.com/maps?q=".$contact[0]->adresse."&t=&z=13&ie=UTF8&iwloc=&output=embed") }}"
+                    width="100%" height="420px" frameborder="0"
+                    style="border:0; border-radius: 15px; position: relative; z-index: 2;"
+                    allowfullscreen="">
+            </iframe>
         </table>
     </div>
 @endsection
