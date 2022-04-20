@@ -32,32 +32,6 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::resource('back/titles', TitleController::class);
 });
 
-// Route::middleware(['auth', 'role:staff'])->group(function(){
-//     Route::get('/back', function(){
-//         $users = User::all();
-//         return view('back.pages.back', compact('users'));
-//     })->name('back.index');
-
-//     dd(Auth::id());
-
-//     Route::resource("back/testimonials", TestimonialController::class);
-//     Route::resource('back/services', ServiceController::class);
-// });
-
-
-
-// Route::middleware(['auth', 'role:member'])->group(function(){
-//     Route::get('/back', function(){
-//         $users = User::all();
-//         return view('back.pages.back', compact('users'));
-//     })->name('back.index');
-
-//     Route::resource("back/testimonials", TestimonialController::class);
-// });
-
-
-
-
 
 
 
