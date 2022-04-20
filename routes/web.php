@@ -11,8 +11,7 @@ use App\Models\Service;
 use App\Models\Testimonial;
 use App\Models\Title;
 use App\Models\User;
-
-
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     $services = Service::all();
@@ -23,7 +22,6 @@ Route::get('/', function () {
 })->name('welcome.index');
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
-    // $lien = '/back';
     Route::get('/back', function(){
         $users = User::all();
         return view('back.pages.back', compact('users'));
@@ -34,6 +32,32 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::resource('back/contact', ContactController::class);
     Route::resource('back/titles', TitleController::class);
 });
+
+// Route::middleware(['auth', 'role:staff'])->group(function(){
+//     Route::get('/back', function(){
+//         $users = User::all();
+//         return view('back.pages.back', compact('users'));
+//     })->name('back.index');
+
+//     dd(Auth::id());
+
+//     Route::resource("back/testimonials", TestimonialController::class);
+//     Route::resource('back/services', ServiceController::class);
+// });
+
+
+
+// Route::middleware(['auth', 'role:member'])->group(function(){
+//     Route::get('/back', function(){
+//         $users = User::all();
+//         return view('back.pages.back', compact('users'));
+//     })->name('back.index');
+
+//     Route::resource("back/testimonials", TestimonialController::class);
+// });
+
+
+
 
 
 
