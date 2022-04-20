@@ -56,9 +56,10 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit($id)
     {
-        //
+        $contact = Contact::find($id);
+        return view('back.pages.contact.edit', compact("contact"));
     }
 
     /**
@@ -68,9 +69,17 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, $id)
     {
-        //
+        $contact = Contact::find($id);
+        $contact->adresse = $request->adresse;
+        $contact->phone = $request ->phone;
+        $contact->mobile = $request->mobile;
+
+        $contact->updated_at = now();
+
+        $contact->save();
+        return redirect()->route("contact.index");
     }
 
     /**
