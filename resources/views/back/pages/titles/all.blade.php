@@ -1,5 +1,7 @@
 @extends('back.layouts.app')
 @section('content')
+<div class="container">
+    <h1 class="text-center services fs-1">Titles</h1>
     @include('back.partials.banner')
     @if (session()->has('success'))
     <div class="alert alert-success">
@@ -12,8 +14,6 @@
             {{ session()->get('erreur') }}
         </div>
     @endif
-    <div class="container">
-        <h1 class="text-center services fs-1">Titles</h1>
         <table class="table">
             <thead>
                 <tr>
