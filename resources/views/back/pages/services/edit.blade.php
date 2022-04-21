@@ -5,7 +5,7 @@
         <form action="{{ route("services.update", $service) }}" method="POST">
             @csrf
             @method('put')
-            <div>
+            {{-- <div>
                 <label for="logo" class="form-label">Logo</label>
                 <select name="logo" class="form-control w-50">
                     <option>Pick your Logo</option>
@@ -21,18 +21,156 @@
                         <option value="service-icon-04.png">
                             Logo 4
                         </option>
-                    <!--selected by default-->
-                    {{-- @foreach ($services as $service)
-                        <option value="{{ $service->id }}">
-                            {{ $service->logo }}
-                        </option>
-                    @endforeach --}}
-                    {{-- @for ($i = 0; $i < 4; $i++)
-                        <option value="service-icon-04.png">
-                            service-icon-04.png
-                        </option>
-                    @endfor --}}
                 </select>
+            </div> --}}
+            <div class="mb-3">
+                <div class='form-group'>
+                    <label for='first-logo-column'>Logo</label>
+                    @if ($service->logo === 'service-icon-01.png')
+                        <div class='d-flex'>
+                            <div class="form-check me-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault1" value="service-icon-01.png" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <img src="{{ '/assets/images/' . $services[0]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault2" value="service-icon-02.png">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <img src="{{ '/assets/images/' . $services[1]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault3" value="service-icon-03.png">
+                                <label class="form-check-label" for="flexRadioDefault3">
+                                    <img src="{{ '/assets/images/' . $services[2]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault4" value="service-icon-04.png">
+                                <label class="form-check-label" for="flexRadioDefault4">
+                                    <img src="{{ '/assets/images/' . $services[3]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                        </div>
+                    
+                    @elseif ($service->logo === 'service-icon-02.png')
+                        <div class='d-flex'>
+                            <div class="form-check me-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault1" value="service-icon-01.png" >
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <img src="{{ '/assets/images/' . $services[0]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault2" value="service-icon-02.png"checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <img src="{{ '/assets/images/' . $services[1]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault3" value="service-icon-03.png">
+                                <label class="form-check-label" for="flexRadioDefault3">
+                                    <img src="{{ '/assets/images/' . $services[2]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault4" value="service-icon-04.png">
+                                <label class="form-check-label" for="flexRadioDefault4">
+                                    <img src="{{ '/assets/images/' . $services[3]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                        </div>
+                    
+                    @elseif ($service->logo === 'service-icon-03.png')
+                        <div class='d-flex'>
+                            <div class="form-check me-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault1" value="service-icon-01.png">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <img src="{{ '/assets/images/' . $services[0]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault2" value="service-icon-02.png">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <img src="{{ '/assets/images/' . $services[1]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault3" value="service-icon-03.png" checked>
+                                <label class="form-check-label" for="flexRadioDefault3">
+                                    <img src="{{ '/assets/images/' . $services[2]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault4" value="service-icon-04.png">
+                                <label class="form-check-label" for="flexRadioDefault4">
+                                    <img src="{{ '/assets/images/' . $services[3]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                        </div>
+                    
+                    @elseif ($service->logo === 'service-icon-04.png')
+                        <div class='d-flex'>
+                            <div class="form-check me-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault1" value="service-icon-01.png">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <img src="{{ '/assets/images/' . $services[0]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault2" value="service-icon-02.png">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <img src="{{ '/assets/images/' . $services[1]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault3" value="service-icon-03.png">
+                                <label class="form-check-label" for="flexRadioDefault3">
+                                    <img src="{{ '/assets/images/' . $services[2]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                            <div class="form-check ms-2">
+                                <input class="form-check-input" type="radio" name="logo"
+                                    id="flexRadioDefault4" value="service-icon-04.png" checked>
+                                <label class="form-check-label" for="flexRadioDefault4">
+                                    <img src="{{ '/assets/images/' . $services[3]->logo }}"
+                                        style="width: 50px" alt="">
+                                </label>
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </div>
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
