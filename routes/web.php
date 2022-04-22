@@ -31,19 +31,11 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::resource('back/services', ServiceController::class);
     Route::resource('back/contact', ContactController::class);
     Route::resource('back/titles', TitleController::class)->middleware('age_check');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware('auth')->name('dashboard');
 });
 
 
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
-
-
-
-
-
 require __DIR__.'/auth.php';
-
 
