@@ -6,7 +6,9 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EnsureUserHasRole
+use function PHPUnit\Framework\returnSelf;
+
+class role
 {
     /**
      * Handle an incoming request.
@@ -15,13 +17,16 @@ class EnsureUserHasRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, string $role)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if($request->user()->roles()->count() !== 0) return $next($request);
+        if(!Auth::check())
+        return redirect('login');
 
-        abort(403);
+
+        foreach($roles as $role){
+            if($request->user()->roles($role))
+            return $next($request);
+        }
+        return redirect('login');
     }
 }
-
-
-// if($request->user()->roles()->where('role', ['admin', $role])->exists()) return $next($request);

@@ -8,6 +8,7 @@
                     <a href="{{ route('welcome.index') }}" class="logo">
                         <img src="{{ asset('assets/images/templatemo-eduwell.png') }}" alt="EduWell Template">
                     </a>
+                    <div>{{ Auth::user()->name }}</div>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
