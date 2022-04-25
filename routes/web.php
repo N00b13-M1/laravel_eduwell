@@ -27,7 +27,7 @@ Route::get('/', function () {
 // Route::middleware(['auth', 'role:admin'])->group(function(){
 
 
-
+//middleware group
 // Route::middleware(['auth', 'role:admin'])->group(function(){
 //     Route::get('/back', function(){
 //         $users = User::all();
@@ -46,10 +46,18 @@ Route::get('/back', function(){
     return view('back.pages.back', compact('users'));
 })->name('back.index')->middleware(['auth', 'role:admin']);
 
-Route::resource("back/testimonials", TestimonialController::class)->middleware('webmasterVerification');
-Route::resource('back/services', ServiceController::class)->middleware('webmasterVerification');
-Route::resource('/back/contact', ContactController::class)->middleware('adminVerification');
-Route::resource('back/titles', TitleController::class)->middleware('adminVerification');
+//middleware simple
+// Route::resource("back/testimonials", TestimonialController::class)->middleware('webmasterVerification');
+// Route::resource('back/services', ServiceController::class)->middleware('webmasterVerification');
+// Route::resource('/back/contact', ContactController::class)->middleware('adminVerification');
+// Route::resource('back/titles', TitleController::class)->middleware('adminVerification');
+
+
+//avec policy
+Route::resource("back/testimonials", TestimonialController::class);
+Route::resource('back/services', ServiceController::class);
+Route::resource('/back/contact', ContactController::class);
+Route::resource('back/titles', TitleController::class);
 
 // Route::get('/back/contact', function () {
 //     return view('back.pages.contact.all');
@@ -61,7 +69,9 @@ Route::get('/dashboard', function () {
 })->middleware('auth')->name('back.index');
 
 
-
+Route::get('/noaccess', function(){
+    return view('back.pages.noaccess');
+});
 
 
 require __DIR__.'/auth.php';

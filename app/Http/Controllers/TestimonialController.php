@@ -36,6 +36,8 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Testimonial::class);
+
         $testimonial = new Testimonial();
         $testimonial->testimonial = $request->testimonial;
         $testimonial->name = $request ->name;
@@ -79,6 +81,9 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $this->authorize('update', Testimonial::class);
+
         $testimonial = Testimonial::find($id);
         $testimonial->testimonial = $request->testimonial;
         $testimonial->name = $request ->name;
@@ -98,6 +103,9 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
+
+        $this->authorize('delete', Testimonial::class);
+
         $longueurtestimonial = Testimonial::all()->count();
         $testimonial = Testimonial::find($id);
 

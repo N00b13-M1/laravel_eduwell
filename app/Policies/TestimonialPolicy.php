@@ -41,7 +41,7 @@ class TestimonialPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->roles->where('role', '')->count() > -1;
     }
 
     /**
@@ -51,9 +51,9 @@ class TestimonialPolicy
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Testimonial $testimonial)
+    public function update(User $user)
     {
-        //
+        return $user->roles->whereIn('role', ['webmaster', 'admin'])->count() !== 0;
     }
 
     /**
@@ -63,9 +63,9 @@ class TestimonialPolicy
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Testimonial $testimonial)
+    public function delete(User $user)
     {
-        //
+        return $user->roles->where('role', 'admin')->count() !== 0;
     }
 
     /**
@@ -75,7 +75,7 @@ class TestimonialPolicy
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Testimonial $testimonial)
+    public function restore(User $user)
     {
         //
     }
