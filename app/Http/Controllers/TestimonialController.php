@@ -40,6 +40,8 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Testimonial::class);
+
         $testimonial = new Testimonial();
         $testimonial->testimonial = $request->testimonial;
         $testimonial->name = $request ->name;
@@ -83,7 +85,9 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $testimonial = Testimonial::find($id);
+        $this->authorize('update', $testimonial);
         $testimonial->testimonial = $request->testimonial;
         $testimonial->name = $request ->name;
         $testimonial->position = $request->position;
@@ -102,9 +106,12 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
+
+        
         $longueurtestimonial = Testimonial::all()->count();
         $testimonial = Testimonial::find($id);
-
+        
+        $this->authorize('delete', $testimonial);
         if($longueurtestimonial > 1){
             $testimonial->delete();
             return redirect()->back()->with("success", "Suppression effectué avec succès");

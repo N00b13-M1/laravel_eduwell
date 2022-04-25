@@ -41,7 +41,7 @@ class ServicePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->role_id === 1 || $user->role_id === 2;
     }
 
     /**
@@ -51,9 +51,9 @@ class ServicePolicy
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Service $service)
+    public function update(User $user)
     {
-        //
+        return $user->role_id === 1;
     }
 
     /**
@@ -63,9 +63,9 @@ class ServicePolicy
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Service $service)
+    public function delete(User $user)
     {
-        //
+        return $user->role_id === 1;
     }
 
     /**

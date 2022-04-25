@@ -41,7 +41,7 @@ class TestimonialPolicy
      */
     public function create(User $user)
     {
-        //
+        return in_array($user->role_id,[1,2,3,4]);
     }
 
     /**
@@ -51,9 +51,9 @@ class TestimonialPolicy
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Testimonial $testimonial)
+    public function update(User $user)
     {
-        //
+        return $user->role_id === 1 || $user->role_id === 2;
     }
 
     /**
@@ -63,11 +63,10 @@ class TestimonialPolicy
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Testimonial $testimonial)
+    public function delete(User $user)
     {
-        //
+        return $user->role_id === 1;
     }
-
     /**
      * Determine whether the user can restore the model.
      *
@@ -75,7 +74,7 @@ class TestimonialPolicy
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Testimonial $testimonial)
+    public function restore(User $user)
     {
         //
     }

@@ -44,6 +44,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $this -> authorize('create', Service::class);
         $service = new Service();
         $service->logo = $request->logo;
         $service->title = $request->title;
@@ -86,6 +87,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
+        $this -> authorize('update', $service); 
         $service->logo = $request->logo;
         $service->title = $request->title;
         $service->description = $request->description;
@@ -105,6 +107,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
+        $this -> authorize('delete', $service); 
         $services = Service::all()->count();
         if ($services > 1) {
             $service->delete();

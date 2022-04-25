@@ -6,7 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class webmasterVerification
+
+class WebmasterVerification
 {
     /**
      * Handle an incoming request.
@@ -17,11 +18,12 @@ class webmasterVerification
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->roles->whereIn('role', ['webmaster', 'admin'])->count() !== 0){
-            // dd(Auth::user()->roles->whereIn('role', ['webmaster', 'admin']));
+        if(Auth::user()->roles->where('role', 'test')->count() !== 0){
             return $next($request);
-        }else{
-        return redirect()->back();
-    }
+        } else{
+            // dd('test');
+            // return view("back.pages.back");
+        }
+        
     }
 }
