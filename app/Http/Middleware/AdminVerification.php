@@ -6,7 +6,9 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EnsureUserHasRole
+
+
+class AdminVerification
 {
     /**
      * Handle an incoming request.
@@ -15,15 +17,17 @@ class EnsureUserHasRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, string $role)
+    public function handle(Request $request, Closure $next)
     {
-        if($request->user()->roles()->where('role', $role)->exists()) {
+        if(Auth::user()->roles->where('role', 'admin')->count() !== 0){
             return $next($request);
+        } else{
+            return redirect()->back();
         }
-        // dd($request->user()->roles()->where('role', $role));
-        abort(403);
     }
 }
+
+
 
 
 

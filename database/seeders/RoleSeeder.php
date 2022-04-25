@@ -21,7 +21,7 @@ class RoleSeeder extends Seeder
             "created_at"=>now()
         ]);
         DB::table("roles")->insert([
-            "role"=> "staff",
+            "role"=> "webmaster",
             "description" => "create, modify, read & delete",
             "created_at"=>now()
         ]);

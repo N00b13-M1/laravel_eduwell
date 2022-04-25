@@ -14,6 +14,9 @@
                 {{ session()->get('erreur') }}
             </div>
         @endif
+        @error('refused')
+            <div class='alert alert-danger'>{{  $message }}</div>
+        @enderror
         <table class="table">
             <thead>
                 <tr>

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
 {
+    // public function __construct(){
+    //     // $this->middleware(['admin_verification']);
+    //     $this->middleware('webmaster_verification');
+    // }
     /**
      * Display a listing of the resource.
      *
