@@ -73,6 +73,15 @@ Route::get('/noaccess', function(){
     return view('back.pages.noaccess');
 });
 
+// Route::get('/back', function(){
+//     $users = User::all();
+//     return view('back.pages.back', compact('users'));
+//     })->name('back.index');
+
+// Route::resource("back/testimonials", TestimonialController::class)->middleware('webmaster_verification');
+// Route::resource('back/services', ServiceController::class);
+// Route::resource('back/contact', ContactController::class)->middleware('webmaster_verification');
+// // Route::resource('back/titles', TitleController::class)->middleware('age_check');
+// Route::resource('back/titles', TitleController::class);
 
 require __DIR__.'/auth.php';
-

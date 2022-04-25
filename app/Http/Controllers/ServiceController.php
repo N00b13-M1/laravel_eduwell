@@ -11,6 +11,9 @@ use function Ramsey\Uuid\v2;
 
 class ServiceController extends Controller
 {
+    // public function __construct(){
+    //     $this->middleware('admin_verification');
+    // }
     /**
      * Display a listing of the resource.
      *

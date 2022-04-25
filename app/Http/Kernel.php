@@ -70,3 +70,5 @@ class Kernel extends HttpKernel
         'isRealUser' => \App\Http\Middleware\isRealUser::class,
     ];
 }
+
+
