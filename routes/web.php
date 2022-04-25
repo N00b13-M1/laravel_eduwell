@@ -44,7 +44,7 @@ Route::get('/', function () {
 Route::get('/back', function(){
     $users = User::all();
     return view('back.pages.back', compact('users'));
-})->name('back.index')->middleware(['auth', 'role:admin']);
+})->name('back.index')->middleware(['auth','role:admin']);
 
 Route::resource("back/testimonials", TestimonialController::class)->middleware('webmasterVerification');
 Route::resource('back/services', ServiceController::class)->middleware('webmasterVerification');
