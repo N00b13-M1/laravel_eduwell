@@ -19,8 +19,9 @@ class AgeCheck
         $age = 20;
         if( $age <= 18 ){ 
             return redirect()->route('back.index');
-        }
+        } else{
         return $next($request);
+        }
     }
 }
 
