@@ -40,6 +40,7 @@
                         <td><form action="{{ route("testimonials.destroy", $item->id) }}" method="post">
                             @csrf
                             @method('DELETE')
+                            <input type="hidden" name="id" value="{{ encrypt($item->id) }}">
                             <button class="btn btn-danger" type="submit">Deleted</button>
                         </form></td>
                     </tr>

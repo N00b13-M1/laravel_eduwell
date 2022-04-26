@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TestimonialController extends Controller
 {
@@ -105,20 +107,28 @@ class TestimonialController extends Controller
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
 
         $this->authorize('delete', Testimonial::class);
 
         $longueurtestimonial = Testimonial::all()->count();
+
+        if(decrypt($request->id) == $id){
+
         $testimonial = Testimonial::find($id);
 
         if($longueurtestimonial > 1){
+            $this->authorize("delete", $testimonial);
+            Storage::disk('public')->delete("img/testimonials/" . $testimonial->image);
             $testimonial->delete();
             return redirect()->back()->with("success", "Suppression effectué avec succès");
         } else {
             return redirect()->back()->with("erreur", "vous ne pouves pas supprimer tout les testimonials");
         }
+    }else{
+        return redirect()->back()->with("success", "Vous n'avez pas le droit");
+    }
     }
 }
 
