@@ -87,18 +87,24 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
+        // dd($request->user()->id);
         $this->authorize('update', Testimonial::class);
 
         $testimonial = Testimonial::find($id);
-        $testimonial->testimonial = $request->testimonial;
-        $testimonial->name = $request ->name;
-        $testimonial->position = $request->position;
+        // dd($testimonial->user_id);
+        if($request->user()->id == $testimonial->user_id){
+            $testimonial->testimonial = $request->testimonial;
+            $testimonial->name = $request ->name;
+            $testimonial->position = $request->position;
 
-        $testimonial->updated_at = now();
+            $testimonial->updated_at = now();
 
-        $testimonial->save();
-        return redirect()->route("testimonials.index");
+            $testimonial->save();
+            return redirect()->route("testimonials.index");
+        } else{
+            return redirect()->route("testimonials.index")->with("erreur", "vous n'êtes pas l'utilisateur qui a crée ce testimonial");
+        }
     }
 
     /**
@@ -113,22 +119,26 @@ class TestimonialController extends Controller
         $this->authorize('delete', Testimonial::class);
 
         $longueurtestimonial = Testimonial::all()->count();
-
-        if(decrypt($request->id) == $id){
-
         $testimonial = Testimonial::find($id);
 
-        if($longueurtestimonial > 1){
-            $this->authorize("delete", $testimonial);
-            Storage::disk('public')->delete("img/testimonials/" . $testimonial->image);
-            $testimonial->delete();
-            return redirect()->back()->with("success", "Suppression effectué avec succès");
-        } else {
-            return redirect()->back()->with("erreur", "vous ne pouves pas supprimer tout les testimonials");
-        }
-    }else{
-        return redirect()->back()->with("success", "Vous n'avez pas le droit");
-    }
+        if($request->user()->id == $testimonial->user_id){
+            if(decrypt($request->id) == $id){
+
+            
+                if($longueurtestimonial > 1){
+                    $this->authorize("delete", $testimonial);
+                    Storage::disk('public')->delete("img/testimonials/" . $testimonial->image);
+                    $testimonial->delete();
+                    return redirect()->back()->with("success", "Suppression effectué avec succès");
+                } else {
+                    return redirect()->back()->with("erreur", "vous ne pouves pas supprimer tout les testimonials");
+                    }
+                }else{
+                    return redirect()->back()->with("success", "Vous n'avez pas le droit");
+                    }
+        }else{
+            return redirect()->back()->with("erreur", "Vous n'êtes pas le créateur de ce testimonial");
+            }
     }
 }
 
