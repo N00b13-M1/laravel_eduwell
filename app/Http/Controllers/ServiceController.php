@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Ui\Presets\Vue;
 use Whoops\Run;
 
@@ -21,6 +22,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('access-service')){
+            abort(403);
+        }
         $services = Service::all();
         return view ('back.pages.services.all', compact('services'));
     }
@@ -32,6 +36,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('access-service')){
+            abort(403);
+        }
         return view('back.pages.services.create');
     }
 

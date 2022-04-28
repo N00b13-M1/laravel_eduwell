@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('position');
             $table->integer('user_id');
+            $table->integer('confirmed');
             $table->timestamps();
         });
     }

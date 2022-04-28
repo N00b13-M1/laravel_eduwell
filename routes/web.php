@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PublishController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
@@ -49,6 +50,7 @@ Route::get('/', function () {
 // Route::resource('/back/contact', ContactController::class)->middleware('adminVerification');
 // Route::resource('back/titles', TitleController::class)->middleware('adminVerification');
 
+Route::resource('/back/publish', PublishController::class)->middleware('adminVerification');
 
 //avec policy
 
@@ -61,10 +63,10 @@ Route::get('/', function () {
     Route::resource('/back/contact', ContactController::class);
     Route::resource('back/titles', TitleController::class);
 
-
 // Route::get('/back/contact', function () {
 //     return view('back.pages.contact.all');
 // })->middleware('auth')->name('dashboard');
+
 
 
 Route::get('/dashboard', function () {

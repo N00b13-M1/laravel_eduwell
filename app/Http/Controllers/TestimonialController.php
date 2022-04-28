@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
+use App\Models\User;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +23,8 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonial = Testimonial::all();
-        return view('back.pages.testimonials.all', compact("testimonial"));
+        $user = User::all();
+        return view('back.pages.testimonials.all', compact("testimonial", "user"));
     }
 
     /**
@@ -31,6 +34,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
+        // Gate::authorize('create-testimonial');
         return view("back.pages.testimonials.create");
     }
 
@@ -48,6 +52,8 @@ class TestimonialController extends Controller
         $testimonial->testimonial = $request->testimonial;
         $testimonial->name = $request ->name;
         $testimonial->position = $request->position;
+        $testimonial->user_id = $request->user()->id;
+        $testimonial->confirmed = 0;
         $testimonial->updated_at = now();
 
         $testimonial->save();
@@ -92,7 +98,7 @@ class TestimonialController extends Controller
         $this->authorize('update', Testimonial::class);
 
         $testimonial = Testimonial::find($id);
-        // dd($testimonial->user_id);
+        dd($id);
         if($request->user()->id == $testimonial->user_id){
             $testimonial->testimonial = $request->testimonial;
             $testimonial->name = $request ->name;
@@ -140,5 +146,20 @@ class TestimonialController extends Controller
             return redirect()->back()->with("erreur", "Vous n'êtes pas le créateur de ce testimonial");
             }
     }
+
+    // public function confirm(){
+    //     $testimonial = Testimonial::all();
+    //     $user = User::all();
+    //     return view('back.pages.testimonials.confirm', compact('testimonial', 'user'));
+    // }
+
+    // public function confirmed($id){
+    //     $testimonial = Testimonial::find($id);
+
+    //     $testimonial->confirmed = 1;
+
+    //     $testimonial->save();
+    //     return redirect()->back();
+    // }
 }
 

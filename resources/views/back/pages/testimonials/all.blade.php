@@ -24,6 +24,7 @@
                     <th scope="col">Testimonial</th>
                     <th scope="col">Name</th>
                     <th scope="col">Position</th>
+                    <th scope="col">Créateur</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,7 @@
                         <td>{{ $item->testimonial }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->position }}</td>
+                        <td>{{ $user[$item->user_id-1]->name }}</td>
                         <td>
                             <a href="{{ route('testimonials.edit', $item->id) }}">Edit</a>
                         </td>
@@ -45,6 +47,7 @@
                         </form></td>
                     </tr>
                 @endforeach
+                <a href="{{ route("publish.index") }}">Confirm testimonials</a>
             </tbody>
         </table>
     </div>
