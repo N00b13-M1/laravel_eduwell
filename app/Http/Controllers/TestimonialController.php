@@ -120,4 +120,3 @@ class TestimonialController extends Controller
         }
     }
 }
-
