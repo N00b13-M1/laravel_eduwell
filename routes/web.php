@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PublishController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TitleController;
@@ -33,7 +34,7 @@ Route::get('/', function () {
 //         $users = User::all();
 //         return view('back.pages.back', compact('users'));
 //     })->name('back.index');
-    
+
 //     Route::resource("back/testimonials", TestimonialController::class);
 //     Route::resource('back/services', ServiceController::class);
 //     Route::resource('back/contact', ContactController::class);
@@ -41,10 +42,6 @@ Route::get('/', function () {
 // });
 
 
-Route::get('/back', function(){
-    $users = User::all();
-    return view('back.pages.back', compact('users'));
-})->name('back.index')->middleware(['auth','role:admin']);
 
 //middleware simple
 // Route::resource("back/testimonials", TestimonialController::class)->middleware('webmasterVerification');
@@ -52,26 +49,29 @@ Route::get('/back', function(){
 // Route::resource('/back/contact', ContactController::class)->middleware('adminVerification');
 // Route::resource('back/titles', TitleController::class)->middleware('adminVerification');
 
+Route::resource('/back/publish', PublishController::class)->middleware('adminVerification');
 
 //avec policy
-Route::resource("back/testimonials", TestimonialController::class);
-Route::resource('back/services', ServiceController::class);
-Route::resource('/back/contact', ContactController::class);
-Route::resource('back/titles', TitleController::class);
+
+    Route::get('/back', function(){
+        $users = User::all();
+        return view('back.pages.back', compact('users'));
+    })->name('back.index')->middleware(['auth', 'role:admin']);
+    Route::resource("back/testimonials", TestimonialController::class);
+    Route::resource('back/services', ServiceController::class);
+    Route::resource('/back/contact', ContactController::class);
+    Route::resource('back/titles', TitleController::class);
 
 // Route::get('/back/contact', function () {
 //     return view('back.pages.contact.all');
 // })->middleware('auth')->name('dashboard');
 
 
+
 Route::get('/dashboard', function () {
     return view('back.pages.back');
 })->middleware('auth')->name('back.index');
 
-
-Route::get('/noaccess', function(){
-    return view('back.pages.noaccess');
-});
 
 // Route::get('/back', function(){
 //     $users = User::all();

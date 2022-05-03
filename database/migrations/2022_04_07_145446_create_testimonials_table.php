@@ -18,12 +18,13 @@ return new class extends Migration
             $table->string('testimonial');
             $table->string('name');
             $table->string('position');
-            $table->foreignId("user_id")->constrained("users", "id");
+            $table->integer('user_id');
+            $table->integer('confirmed');
             $table->timestamps();
         });
     }
 
-    
+
 
 
 

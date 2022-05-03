@@ -16,7 +16,7 @@ class isRealUser
      */
     public function handle(Request $request, Closure $next)
     {
-        $id = $request->route()->parameters()['id'];
+        $id = $request->route()->parameters(['id']);
         if($request->user()->id == $id){
         return $next($request);
     } else{

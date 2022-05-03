@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Testimonial;
 use App\Models\User;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TestimonialPolicy
@@ -41,7 +42,12 @@ class TestimonialPolicy
      */
     public function create(User $user)
     {
+<<<<<<< HEAD
         return in_array($user->role_id,[1,2,3,4]);
+=======
+        
+        return $user->roles->where('role', '')->count() > -1;
+>>>>>>> 3e0dab0d91f84ac19272650f054cd641bde32c0e
     }
 
     /**

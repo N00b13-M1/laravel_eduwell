@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Policies\ServicePolicy;
+use App\Policies\TestimonialPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +27,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('access-service', [ServicePolicy::class, 'create']);
     }
 }

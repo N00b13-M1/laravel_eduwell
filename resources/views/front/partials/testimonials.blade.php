@@ -10,12 +10,14 @@
             <div class="col-lg-12">
                 <div class="owl-testimonials owl-carousel" style="position: relative; z-index: 5;">
                     @foreach ($testimonials as $item)
-                    <div class="item">
-                        <p>{{ $item->testimonial }}</p>
-                        <h4>{{ $item->name }}</h4>
-                        <span>{{  $item->position }}</span>
-                        <img src="{{ asset('assets/images/quote.png') }}" alt="">
-                    </div>   
+                        @if ($item->confirmed == 1)
+                            <div class="item">
+                                <p>{{ $item->testimonial }}</p>
+                                <h4>{{ $item->name }}</h4>
+                                <span>{{  $item->position }}</span>
+                                <img src="{{ asset('assets/images/quote.png') }}" alt="">
+                            </div>
+                        @endif
                     @endforeach
                 </div>
             </div>

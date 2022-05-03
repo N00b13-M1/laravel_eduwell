@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
+use App\Models\User;
+use Illuminate\Auth\Access\Gate;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TestimonialController extends Controller
 {
@@ -19,7 +23,8 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonial = Testimonial::all();
-        return view('back.pages.testimonials.all', compact("testimonial"));
+        $user = User::all();
+        return view('back.pages.testimonials.all', compact("testimonial", "user"));
     }
 
     /**
@@ -29,6 +34,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
+        // Gate::authorize('create-testimonial');
         return view("back.pages.testimonials.create");
     }
 
@@ -46,12 +52,14 @@ class TestimonialController extends Controller
         $testimonial->testimonial = $request->testimonial;
         $testimonial->name = $request ->name;
         $testimonial->position = $request->position;
+        $testimonial->user_id = $request->user()->id;
+        $testimonial->confirmed = 0;
         $testimonial->updated_at = now();
 
         $testimonial->save();
         return redirect()->route("testimonials.index");
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -86,16 +94,23 @@ class TestimonialController extends Controller
     public function update(Request $request, $id)
     {
 
+        // dd($request->user()->id);
+        $this->authorize('update', Testimonial::class);
+
         $testimonial = Testimonial::find($id);
-        $this->authorize('update', $testimonial);
-        $testimonial->testimonial = $request->testimonial;
-        $testimonial->name = $request ->name;
-        $testimonial->position = $request->position;
+        dd($id);
+        if($request->user()->id == $testimonial->user_id){
+            $testimonial->testimonial = $request->testimonial;
+            $testimonial->name = $request ->name;
+            $testimonial->position = $request->position;
 
-        $testimonial->updated_at = now();
+            $testimonial->updated_at = now();
 
-        $testimonial->save();
-        return redirect()->route("testimonials.index");
+            $testimonial->save();
+            return redirect()->route("testimonials.index");
+        } else{
+            return redirect()->route("testimonials.index")->with("erreur", "vous n'êtes pas l'utilisateur qui a crée ce testimonial");
+        }
     }
 
     /**
@@ -104,19 +119,45 @@ class TestimonialController extends Controller
      * @param  \App\Models\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
 
-        
+
         $longueurtestimonial = Testimonial::all()->count();
         $testimonial = Testimonial::find($id);
-        
-        $this->authorize('delete', $testimonial);
-        if($longueurtestimonial > 1){
-            $testimonial->delete();
-            return redirect()->back()->with("success", "Suppression effectué avec succès");
-        } else {
-            return redirect()->back()->with("erreur", "vous ne pouves pas supprimer tout les testimonials");
-        }
+
+        if($request->user()->id == $testimonial->user_id){
+            if(decrypt($request->id) == $id){
+
+
+                if($longueurtestimonial > 1){
+                    $this->authorize("delete", $testimonial);
+                    Storage::disk('public')->delete("img/testimonials/" . $testimonial->image);
+                    $testimonial->delete();
+                    return redirect()->back()->with("success", "Suppression effectué avec succès");
+                } else {
+                    return redirect()->back()->with("erreur", "vous ne pouves pas supprimer tout les testimonials");
+                    }
+                }else{
+                    return redirect()->back()->with("success", "Vous n'avez pas le droit");
+                    }
+        }else{
+            return redirect()->back()->with("erreur", "Vous n'êtes pas le créateur de ce testimonial");
+            }
     }
+
+    // public function confirm(){
+    //     $testimonial = Testimonial::all();
+    //     $user = User::all();
+    //     return view('back.pages.testimonials.confirm', compact('testimonial', 'user'));
+    // }
+
+    // public function confirmed($id){
+    //     $testimonial = Testimonial::find($id);
+
+    //     $testimonial->confirmed = 1;
+
+    //     $testimonial->save();
+    //     return redirect()->back();
+    // }
 }
